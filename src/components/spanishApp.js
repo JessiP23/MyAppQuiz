@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import "./App.css";
 import img6 from "../images/img6.jpg";
 import img7 from "../images/img7.jpg";
-import imageToy from "../images/toy.jpg";
-import crying from "../images/crying.jpg";
-import running from "../images/running.jpg";
+import img8 from "./images/img8.jpg";
+import imageToy from "./images/toy.jpg";
+import crying from "./images/crying.jpg";
+import running from "./images/running.jpg";
 import winter from "../images/winter.jpg";
+import { Link } from "react-router-dom";
+import "./style.css";
 
 function SpanishApp() {
   //update variables
@@ -40,7 +42,7 @@ function SpanishApp() {
       choice: (
         <div>
           <p>El perro _____ mientras corría por el parque.</p>
-          <img src={img6} alt="Dog's image" />
+          <img src={img6} alt="Dog" />
         </div> 
       ),
       options: [ 
@@ -69,14 +71,14 @@ function SpanishApp() {
       id: 3,
       choice: (
         <div>
-          <p>¿Cuál de las siguientes imagenes representa Tomás jugando con su pelota.</p>
+          <p>¿Cuál de las siguientes imagenes representa Tomás jugando con su pelota?</p>
         </div>
       ),
       options: [
-        { id: 8, img:{running}, condition: false },
-        { id: 9, img:{imageToy}, condition: false },
-        { id: 10, img:{img8}, condition: true },
-        { id: 11, img:{crying}, condition: false },
+        { id: 8, img: running, condition: false },
+        { id: 9, img: imageToy, condition: false },
+        { id: 10, img: img8, condition: true },
+        { id: 11, img: crying, condition: false },
       ],
     },
     {
@@ -96,7 +98,7 @@ function SpanishApp() {
       id: 5,
       choice: (
         <div>
-          <p>México <strong>es / juega</strong> un país maravilloso al <strong>parecer / igual</strong> parecer / igual que Estados Unidos.</p>
+          <p>México    <strong>es / juega</strong>    un país maravilloso al    <strong>parecer / igual</strong>    que Estados Unidos.</p>
           </div>),
       options: [
         { id: 16, choice: "juega, parecer", condition: false },
@@ -110,7 +112,7 @@ function SpanishApp() {
       choice: (
       <div>
         <p> En Estados Unidos, la temperatura llega a -4°C cuando es <strong>primavera / invierno</strong></p>
-        <img src={winter} alt="Winter Image" />
+        <img src={winter} alt="Winter Environment" />
         </div>),
       options: [
         { id: 20, choice: "primavera", condition: false },
@@ -174,10 +176,10 @@ function SpanishApp() {
         </div>
       ),
       options: [
-        { id: 36, choice: "Prime, Composite, Prime, Composite, Prime", condition: false },
-        { id: 37, choice: "Prime, Composite, Composite, Prime, Prime", condition: false },
-        { id: 38, choice: "Prime, Composite, Prime, Composite, Composite", condition: true },
-        { id: 39, choice: "Composite, Prime, Composite, Prime, Prime", condition: false },
+        { id: 36, choice: "1:00 pm", condition: false },
+        { id: 37, choice: "6:00 pm", condition: false },
+        { id: 38, choice: "8:00 am", condition: true },
+        { id: 39, choice: "2:00 am", condition: false },
       ],
     },
   ];
@@ -237,8 +239,9 @@ function SpanishApp() {
                 </tr>
               </table>
             </div>
-            <div className="button">
+            <div className="buttonn">
               <button onClick={() => restartGame()}>Restart Quiz</button>
+              <Link className="style-link" to="/quiz-section">Go to Home Page</Link>
             </div>
           </div>
           <div className="footer">

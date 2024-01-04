@@ -5,6 +5,7 @@ import img3 from "../images/img3.jpg";
 import img4 from "../images/img4.jpg";
 import img5 from "../images/img5.jpg";
 import "./style.css";
+import { Link } from "react-router-dom";
 
 function MathApp() {
   //update variables
@@ -15,23 +16,26 @@ function MathApp() {
   const [score, setScore] = useState(0);
 
   useEffect(() => {
+    //ES module
     const script1 = document.createElement('script');
     script1.type = 'module';
+    //ionicons ES module
     script1.src = 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
     document.head.appendChild(script1);
 
+    //Not ES module
     const script2 = document.createElement('script');
     script2.nomodule = true;
     script2.src = 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js';
     document.head.appendChild(script2);
 
     return () => {
-      // Clean up the dynamically added scripts if the component unmounts
       document.head.removeChild(script1);
       document.head.removeChild(script2);
     };
   }, []);
 
+  //questions, options, answers
   const questions = [
     {
       id: 1,
@@ -150,6 +154,7 @@ function MathApp() {
     },
   ];
 
+  //restart game with initial values
   const restartGame = () => {
     setScore(0);
     setCurrentQuestion(0);
@@ -162,12 +167,13 @@ function MathApp() {
       return;
     }
 
+    //finds id in selected option
     const selectedOption = questions[currentQuestion].options.find(option => option.id === clickedOptionId);
-
+    //update score if correct answers
     if (selectedOption && selectedOption.condition) {
       setScore(score + 1);
     }
-
+    //keep track of the currently option
     setSelectedOptionId(clickedOptionId);
   };
   
@@ -176,6 +182,7 @@ function MathApp() {
   const nextQuestion = () => {
     if (currentQuestion + 1 < questions.length) {
       setCurrentQuestion(currentQuestion + 1);
+      //resets the option into new currentQuestion
       setSelectedOptionId(null);
     } else {
       setEndQuiz(true);
@@ -185,9 +192,11 @@ function MathApp() {
 
   return (
     <div className="quiz">
+      {/*if all questions have been answered */}
         {endQuiz ? (
         <div className="final-page">
           <header>Final Results</header>
+          {/*table with scores */}
           <div className="content-result">
             <div className="final-results">
               <table>
@@ -205,10 +214,11 @@ function MathApp() {
                 </tr>
               </table>
             </div>
-            <div className="button">
-              <button onClick={() => restartGame()}>Restart Quiz</button>
+            {/*Restart Game */}
+            <button onClick={restartGame}>Restart Quiz</button>
+            <Link className="style-link" to="/quiz-section">Go to Home Page</Link>
             </div>
-          </div>
+            {/*Footer */}
           <div className="footer">
             <footer>
               <div className="author">
@@ -227,6 +237,7 @@ function MathApp() {
         </div>
       ) : (
         <div className="front-quiz">
+          {/*Rendering questions */}
           <header>Math Quiz</header>
           <div className="questions">
             <h3 className="question-choice">{questions[currentQuestion].choice}</h3>

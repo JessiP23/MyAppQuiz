@@ -1,0 +1,13 @@
+@keyframes changeColor{
+    /*change text color*/
+    0% { color: rgb(240, 190, 51)}
+    25% {color: orange;}
+    50% { color: rgb(174, 115, 19);}
+    75% {color: rgb(150, 106, 11);}
+    100% { color: rgb(190, 161, 64);}
+}
+
+.change-color-text {
+    display: inline-block;
+    animation: changeColor 3s infinite;
+}
