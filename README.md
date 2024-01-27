@@ -1,0 +1,5 @@
+![Front Page Dynamic squares](./screenshots/app1.png)
+![Front Page Dynamix Squares](./screenshots/app2.png)
+![ Themes to display: Math and Spanish](./screenshots/app3.png)
+![Spanish test question multiple choice](./screenshots/app4.png)
+![Table results](./screenshots/app5.png)
